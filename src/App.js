@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 // class App extends Component {
 //   render() {
@@ -50,19 +50,43 @@ import React, { Component } from 'react';
 //   return <div>Hi!</div>
 // }
 
+// const App = () => {
+//   return (
+//     <div>
+//       <Cat />
+//       <Cat />
+//       <Cat />
+//       <Cat />
+//     </div>
+//   )
+// }
+// 
+// const Cat = () => {
+//   return <div>Meow!</div>
+// }
+
 const App = () => {
+  const profiles = [
+    { name: "Taro", age: 10 },
+    { name: "Hanako", age: 5},
+    { name: "Noname" }
+  ]
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
-      <Cat />
+      { /* ← JSXの中でjavascriptを許可する */
+        profiles.map((profile, index) => <User name={profile.name} age={profile.age} key={index} />)
+      /* JSXの中でjavascriptを許可する → */ } 
     </div>
   )
 }
 
-const Cat = () => {
-  return <div>Meow!</div>
+const User = (props) => {
+  return <div>Hi, I am {props.name}, and {props.age} years old!</div>
+}
+
+/* デフォルト Props */
+User.defaultProps = {
+  age: 1
 }
 
 export default App;
