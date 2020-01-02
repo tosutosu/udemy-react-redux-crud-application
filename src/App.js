@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 // class App extends Component {
 //   render() {
@@ -73,9 +74,9 @@ const App = () => {
   ]
   return (
     <div>
-      { /* ← JSXの中でjavascriptを許可する */
+      {
         profiles.map((profile, index) => <User name={profile.name} age={profile.age} key={index} />)
-      /* JSXの中でjavascriptを許可する → */ } 
+      } 
     </div>
   )
 }
@@ -84,9 +85,10 @@ const User = (props) => {
   return <div>Hi, I am {props.name}, and {props.age} years old!</div>
 }
 
-/* デフォルト Props */
-User.defaultProps = {
-  age: 1
+/* PropTypes */
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number.isRequired
 }
 
 export default App;
