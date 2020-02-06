@@ -20,7 +20,6 @@ export const postEvent = values => async dispatch => {
 }
 
 export const putEvent = values => async dispatch => {
-    console.log(values)
     const response = await axios.put(`${ROOT_URL}/events/${values.id}${QUERYSTRING}`, values);
     dispatch({ type: UPDATE_EVENT, response });
 }
